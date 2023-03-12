@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIAssistant.Styles.LayoutStyles">
+
+  <Style x:Key="MainContentStyle" TargetType="VerticalStackLayout">
+    <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    <Setter Property="VerticalOptions" Value="FillAndExpand" />
+    <Setter Property="Padding" Value="10,10,10,10" />
+  </Style>
+
+</ResourceDictionary>
+

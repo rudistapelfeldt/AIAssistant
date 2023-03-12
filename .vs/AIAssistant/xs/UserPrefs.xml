@@ -1,0 +1,50 @@
+﻿<Properties StartupConfiguration="{CC89716F-1380-40F7-B71F-F59E89A03241}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="Android.nexus_10_-_api_29" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/OpenAi/Implementation/OpenAiClient.cs">
+    <Files>
+      <File FileName="AIAssistant/Views/MainPage.xaml" />
+      <File FileName="AIAssistant/Views/MainPage.xaml.cs" />
+      <File FileName="AIAssistant/App.xaml.cs" />
+      <File FileName="AIAssistant/App.xaml" />
+      <File FileName="AIAssistant/Platforms/MacCatalyst/AppDelegate.cs" />
+      <File FileName="AIAssistant/Platforms/Android/MainApplication.cs" />
+      <File FileName="AIAssistant/ViewModels/MainPageViewModel.cs" />
+      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" Line="40" Column="1" />
+      <File FileName="AIAssistant/Model/AppConstants.cs" />
+      <File FileName="AIAssistant/OpenAi/Interfaces/IOpenAiClient.cs" Line="9" Column="11" />
+      <File FileName="AIAssistant/Model/Model.cs" />
+      <File FileName="AIAssistant/Model/Permission.cs" />
+      <File FileName="AIAssistant/Model/CompletionResponse.cs" />
+      <File FileName="AIAssistant/OpenAi/Interfaces/IAuthenticationService.cs" />
+      <File FileName="AIAssistant/OpenAi/Implementation/AuthenticationService.cs" />
+      <File FileName="AIAssistant/PrismStartup.cs" />
+      <File FileName="AIAssistant/OpenAi/Interfaces/ISecureStorageService.cs" />
+      <File FileName="AIAssistant/OpenAi/Implementation/SecureStorageService.cs" />
+      <File FileName="AIAssistant/Properties/launchSettings.json" />
+      <File FileName="AIAssistant/Platforms/MacCatalyst/Program.cs" />
+      <File FileName="AIAssistant/Model/Data.cs" />
+      <File FileName="AIAssistant/Model/StreamResponse.cs" />
+      <File FileName="AIAssistant/MauiProgram.cs" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.200/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.FrameworkReferenceResolution.targets" />
+      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.200/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" />
+      <File FileName="AIAssistant/AIAssistant.csproj" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
+          <Node name="AIAssistant" expanded="True">
+            <Node name="AIAssistant" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.nexus_10_-_api_29" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

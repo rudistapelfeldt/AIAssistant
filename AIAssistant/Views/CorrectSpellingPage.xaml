@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AIAssistant.Views.CorrectSpellingPage"
+             Title="CorrectSpellingPage">
+    <VerticalStackLayout Spacing="20"
+                         Padding="10,10,10,10"
+                         HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+      <Editor Placeholder="Correction will appear here"
+              Text="{Binding ResponseText}"
+              FontSize="Body"
+              TextColor="{StaticResource Black}"/>
+    <HorizontalStackLayout Spacing="20"
+                           Padding="10,10,10,10"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="End">
+      <Entry Text="{Binding InputText}"
+             Placeholder="Please enter your text here"
+             TextColor="{StaticResource Black}"
+             FontSize="Body"/>
+
+      <Button Text="Correct"
+              Command="{Binding CorrectCommand}"/>
+
+    </HorizontalStackLayout>
+        
+    </VerticalStackLayout>
+</ContentPage>
+
