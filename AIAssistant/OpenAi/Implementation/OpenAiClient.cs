@@ -9,7 +9,9 @@ using AIAssistant.Model;
 using AIAssistant.OpenAi.Interfaces;
 using OpenAI;
 using OpenAI_API;
+using OpenAI_API.Chat;
 using OpenAI_API.Completions;
+using OpenAI_API.Images;
 using CompletionRequest = OpenAI_API.Completions.CompletionRequest;
 
 namespace AIAssistant.OpenAi.Implementation
@@ -76,22 +78,19 @@ namespace AIAssistant.OpenAi.Implementation
         public async Task<CompletionResult> GetCompletionText(string request, string output)
         {
             return await api.Completions.CreateCompletionAsync(new CompletionRequest(request, model: OpenAI_API.Models.Model.CurieText, temperature: 0.1, max_tokens : 100));
-            
+        }
 
-            //var api = new OpenAI_API.OpenAIAPI(AppConstants.OPENAI_API_KEY);
-            //await foreach (var token in api.Completions.StreamCompletionEnumerableAsync(new CompletionRequest
-            //{
-            //    Model = "text-davinci-003",
-            //    Temperature = 0.5f,
-            //    MaxTokens = 120,
-            //    TopP = 0.3f,
-            //    FrequencyPenalty = 0.5f,
-            //    PresencePenalty = 0,
-            //    Prompt = request
-            //}))
-            //{
-            //    Console.WriteLine(token);
-            //}
+        public async Task<ChatResult> CreateChatCompletionAsync(OpenAI_API.Chat.ChatRequest request)
+        {
+            var result = await api.Chat.CreateChatCompletionAsync(request);
+
+            return result;
+        }
+
+        public async Task<ImageResult> GenerateImage(string prompt)
+        {
+            var response = await api.ImageGenerations.CreateImageAsync(new OpenAI_API.Images.ImageGenerationRequest { NumOfImages = 1, Prompt = prompt, ResponseFormat = ImageResponseFormat.Url, Size = ImageSize._1024, User = Guid.NewGuid().ToString() });
+            return response;
         }
     }   
 }

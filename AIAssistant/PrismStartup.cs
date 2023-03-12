@@ -9,12 +9,12 @@ internal static class PrismStartup
     public static void Configure(PrismAppBuilder builder)
     {
         builder.RegisterTypes(RegisterTypes)
-                .OnAppStart("FlyOutMainPage/NavigationPage/ChatPage");
+                .OnAppStart("TabbedMainPage");
     }
 
     private static void RegisterTypes(IContainerRegistry containerRegistry)
     {
-        containerRegistry.RegisterForNavigation<FlyOutMainPage>()
+        containerRegistry.RegisterForNavigation<TabbedMainPage>()
                      .RegisterForNavigation<MainPage>()
                      .RegisterForNavigation<ChatPage>()
                      .RegisterForNavigation<CorrectSpellingPage>()

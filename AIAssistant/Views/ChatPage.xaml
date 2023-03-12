@@ -4,20 +4,26 @@
              x:Class="AIAssistant.Views.ChatPage"
              Title="AI Chat">
   <VerticalStackLayout VerticalOptions="FillAndExpand"
-                       HorizontalOptions="FillAndExpand">
+                       HorizontalOptions="FillAndExpand"
+                       BackgroundColor="Blue">
     <Editor Placeholder="Response here"
             FontSize="Body"
-            Text="{Binding CorrectedText}"
+            Text="{Binding ConversationText}"
             TextColor="Black"
             BackgroundColor="White"
-            VerticalOptions="StartAndExpand"/>
-    <HorizontalStackLayout HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            HeightRequest="800"/>
+    <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
                            Spacing="20">
       <Entry Placeholder="Ask anything"
            Text="{Binding ChatInputText}"
            TextColor="Black"
-           VerticalOptions="End"/>
+           VerticalOptions="End"
+           BackgroundColor="{StaticResource White}"
+           WidthRequest="600"
+           HorizontalOptions="FillAndExpand"/>
       <Button Text="Send" Command="{Binding SendChatInputCommand}"/>
+      <Button Text="New chat" Command="{Binding NewChatCommand}"/>
     </HorizontalStackLayout>
     
 
