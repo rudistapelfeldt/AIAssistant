@@ -18,13 +18,16 @@ namespace AIAssistant.OpenAi.Implementation
 {
     public class OpenAiClient : IOpenAiClient
     {
-       OpenAIAPI api = new OpenAIAPI(AppConstants.OPENAI_API_KEY);
+        IHttpClientFactory _httpClientFactory;
+
+        OpenAIAPI api = new OpenAIAPI(AppConstants.OPENAI_API_KEY);
 
         readonly ISecureStorageService _secureStorageService;
 
         public OpenAiClient(ISecureStorageService secureStorageService)
         {
             _secureStorageService = secureStorageService;
+           
         }
 
         public async Task<string> GetCorrectSpelling(string prompt)
@@ -80,16 +83,24 @@ namespace AIAssistant.OpenAi.Implementation
             return await api.Completions.CreateCompletionAsync(new CompletionRequest(request, model: OpenAI_API.Models.Model.CurieText, temperature: 0.1, max_tokens : 100));
         }
 
-        public async Task<ChatResult> CreateChatCompletionAsync(OpenAI_API.Chat.ChatRequest request)
+        public async Task StreamChatAsync(OpenAI_API.Chat.ChatRequest request, string output)
         {
-            var result = await api.Chat.CreateChatCompletionAsync(request);
-
-            return result;
+            await foreach (var res in api.Chat.StreamChatEnumerableAsync(request))
+            {
+                output += res.Choices[0].Message;
+            }
         }
 
         public async Task<ImageResult> GenerateImage(string prompt)
         {
             var response = await api.ImageGenerations.CreateImageAsync(new OpenAI_API.Images.ImageGenerationRequest { NumOfImages = 1, Prompt = prompt, ResponseFormat = ImageResponseFormat.Url, Size = ImageSize._1024, User = Guid.NewGuid().ToString() });
+            return response;
+        }
+
+        public async Task<ChatResult> GetConversation(OpenAI_API.Chat.ChatRequest request)
+        {
+            var response = await api.Chat.CreateChatCompletionAsync(request);
+
             return response;
         }
     }   

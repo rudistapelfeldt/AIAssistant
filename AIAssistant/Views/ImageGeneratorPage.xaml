@@ -3,25 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AIAssistant.Views.ImageGeneratorPage"
              Title="Image Generator">
-    <VerticalStackLayout Spacing="20"
-                         Padding="10,10,10,10"
-                         HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
+    <Grid RowDefinitions="1*,Auto, Auto"
+          ColumnDefinitions="*, Auto"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="FillAndExpand">
       <Image Source="{Binding GeneratedImage}"
-             Aspect="AspectFit"/>
-    <HorizontalStackLayout Spacing="20"
-                           Padding="10,10,10,10"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="End">
+             Aspect="AspectFit"
+             Grid.Row="0"
+             Grid.Column="0"
+             Grid.ColumnSpan="2"
+             HeightRequest="800"/>
+    
       <Entry Placeholder="Describe the image you want to generate"
              Text="{Binding ImageDescriptionText}"
              FontSize="Body"
+             Grid.Column="0"
+             Grid.ColumnSpan="2"
+             Grid.Row="1"
+             WidthRequest="600"
+             BackgroundColor="{StaticResource White}"
              TextColor="{StaticResource Black}"/>
       <Button Text="Generate"
+              Grid.Row="2"
+              Grid.Column="0"
               Command="{Binding GenerateImageCommand}"/>
-
-    </HorizontalStackLayout>
-
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
 

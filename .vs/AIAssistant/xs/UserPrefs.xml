@@ -1,54 +1,21 @@
-﻿<Properties StartupConfiguration="{CC89716F-1380-40F7-B71F-F59E89A03241}|Default">
+﻿<Properties StartupConfiguration="{CC89716F-1380-40F7-B71F-F59E89A03241}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/rstapelfeldt/projects/AIAssistant/AIAssistant/ViewModels/ChatPageViewModel.cs" relfile="AIAssistant/ViewModels/ChatPageViewModel.cs" line="52" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/Views/TabbedMainPage.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/Utils/CodeFormatter.cs">
     <Files>
-      <File FileName="AIAssistant/Views/MainPage.xaml" />
-      <File FileName="AIAssistant/Views/MainPage.xaml.cs" />
-      <File FileName="AIAssistant/App.xaml.cs" Line="19" Column="6" />
-      <File FileName="AIAssistant/App.xaml" />
-      <File FileName="AIAssistant/Platforms/MacCatalyst/AppDelegate.cs" />
-      <File FileName="AIAssistant/Platforms/Android/MainApplication.cs" />
-      <File FileName="AIAssistant/ViewModels/MainPageViewModel.cs" />
-      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" Line="86" Column="27" />
-      <File FileName="AIAssistant/Model/AppConstants.cs" />
-      <File FileName="AIAssistant/OpenAi/Interfaces/IOpenAiClient.cs" Line="15" Column="74" />
-      <File FileName="AIAssistant/Model/Model.cs" />
-      <File FileName="AIAssistant/Model/Permission.cs" />
-      <File FileName="AIAssistant/Model/CompletionResponse.cs" />
-      <File FileName="AIAssistant/OpenAi/Interfaces/IAuthenticationService.cs" />
-      <File FileName="AIAssistant/OpenAi/Implementation/AuthenticationService.cs" />
-      <File FileName="AIAssistant/PrismStartup.cs" Line="19" Column="54" />
-      <File FileName="AIAssistant/OpenAi/Interfaces/ISecureStorageService.cs" />
-      <File FileName="AIAssistant/OpenAi/Implementation/SecureStorageService.cs" />
-      <File FileName="AIAssistant/Properties/launchSettings.json" />
-      <File FileName="AIAssistant/Platforms/MacCatalyst/Program.cs" Line="13" Column="1" />
-      <File FileName="AIAssistant/Model/Data.cs" />
-      <File FileName="AIAssistant/Model/StreamResponse.cs" />
-      <File FileName="AIAssistant/MauiProgram.cs" />
-      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.200/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Sdk.FrameworkReferenceResolution.targets" />
-      <File FileName="../../../../usr/local/share/dotnet/sdk/7.0.200/Sdks/Microsoft.NET.Sdk/targets/Microsoft.PackageDependencyResolution.targets" />
-      <File FileName="AIAssistant/AIAssistant.csproj" />
-      <File FileName="AIAssistant/Views/FlyOutMainPage.xaml" />
-      <File FileName="AIAssistant/Styles/LayoutStyles.xaml" />
-      <File FileName="AIAssistant/Styles/LayoutStyles.xaml.cs" />
-      <File FileName="AIAssistant/Views/ChatPage.xaml" Line="17" Column="40" />
-      <File FileName="AIAssistant/Views/ChatPage.xaml.cs" />
-      <File FileName="AIAssistant/Resources/Styles/Styles.xaml" />
-      <File FileName="AIAssistant/Resources/Styles/Colors.xaml" />
-      <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="51" Column="71" />
-      <File FileName="AIAssistant/Views/CorrectSpellingPage.xaml" />
-      <File FileName="AIAssistant/ViewModels/CorrectSpellingPageViewModel.cs" />
-      <File FileName="AIAssistant/Views/ImageGeneratorPage.xaml" />
-      <File FileName="AIAssistant/ViewModels/ImageGeneratorPageViewModel.cs" />
-      <File FileName="AIAssistant/Model/ChatRequest.cs" Line="113" Column="22" />
-      <File FileName="AIAssistant/Views/TabbedPage.xaml" Line="9" Column="31" />
-      <File FileName="AIAssistant/Views/TabbedPage.xaml.cs" Line="6" Column="6" />
+      <File FileName="AIAssistant/Resources/Styles/Styles.xaml" Line="103" Column="22" />
+      <File FileName="AIAssistant/Views/ChatPage.xaml" Line="37" Column="24" />
+      <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="83" Column="1" />
+      <File FileName="AIAssistant/Resources/Styles/Colors.xaml" Line="12" Column="30" />
+      <File FileName="AIAssistant/AIAssistant.csproj" Line="128" Column="22" />
+      <File FileName="AIAssistant/Views/ChatPage.xaml.cs" Line="1" Column="1" />
+      <File FileName="AIAssistant/Views/TabbedMainPage.xaml" Line="1" Column="1" />
+      <File FileName="AIAssistant/MauiProgram.cs" Line="1" Column="1" />
+      <File FileName="AIAssistant/PrismStartup.cs" Line="29" Column="1" />
+      <File FileName="AIAssistant/Platforms/Android/MainApplication.cs" Line="3" Column="1" />
+      <File FileName="AIAssistant/Controls/CustomEditor.cs" Line="18" Column="164" />
+      <File FileName="AIAssistant/Utils/CodeFormatter.cs" Line="16" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -56,21 +23,20 @@
           <Option id="ShowAllFiles" value="True" />
           <Node name="AIAssistant" expanded="True">
             <Node name="AIAssistant" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Model" expanded="True" />
-              <Node name="OpenAi" expanded="True">
-                <Node name="Implementation" expanded="True" />
-                <Node name="Interfaces" expanded="True" />
+              <Node name="Controls" expanded="True" />
+              <Node name="Resources" expanded="True">
+                <Node name="Icon" expanded="True" />
+                <Node name="Raw" expanded="True">
+                  <Node name="Lottie" expanded="True" />
+                </Node>
+                <Node name="Styles" expanded="True" />
               </Node>
-              <Node name="Platforms" expanded="True">
-                <Node name="MacCatalyst" expanded="True" />
+              <Node name="Utils" expanded="True">
+                <Node name="CodeFormatter.cs" selected="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="ChatPage.xaml" expanded="True" />
-                <Node name="ImageGeneratorPage.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True" />
-                <Node name="TabbedMainPage.xaml" expanded="True" selected="True" />
               </Node>
               <Node name="App.xaml" expanded="True" />
             </Node>
@@ -79,7 +45,14 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
   <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="MyAppleMacCatalystID" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.26" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rstapelfeldt/projects/AIAssistant/AIAssistant/Utils/CodeFormatter.cs" relfile="AIAssistant/Utils/CodeFormatter.cs" line="16" column="1" />
+      <Breakpoint file="/Users/rstapelfeldt/projects/AIAssistant/AIAssistant/Controls/CustomEditor.cs" relfile="AIAssistant/Controls/CustomEditor.cs" line="67" column="1" />
+      <Breakpoint file="/Users/rstapelfeldt/projects/AIAssistant/AIAssistant/Controls/CustomEditor.cs" relfile="AIAssistant/Controls/CustomEditor.cs" line="24" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

@@ -3,13 +3,14 @@ using System.Text;
 using AIAssistant.Model;
 using AIAssistant.OpenAi.Interfaces;
 using OpenAI_API.Chat;
+using Microsoft.Maui.Networking;
+using System.Collections.ObjectModel;
 
 namespace AIAssistant.ViewModels
 {
     public class ChatPageViewModel : BindableBase, INavigationAware
     {
         #region private members
-        IList<ChatMessage> _conversationList = new List<ChatMessage>();
         IList<ChatMessage> _messageArray;
         readonly IOpenAiClient _openAiClient;
 
@@ -20,12 +21,32 @@ namespace AIAssistant.ViewModels
         public string ChatInputText { get; set; }
 
         public string ConversationText { get; set; }
+
+        public bool IsBusy { get; set; }
+
+        public string NetworkAccess =>
+            Connectivity.NetworkAccess.ToString();
+
+        public string ConnectionProfiles
+        {
+            get
+            {
+                var profiles = string.Empty;
+                foreach (var p in Connectivity.ConnectionProfiles)
+                    profiles += "\n" + p.ToString();
+                return profiles;
+            }
+        }
+
+        public ObservableCollection<ChatMessage> ConversationList { get; set; }
         #endregion
 
         #region Commands
         public DelegateCommand SendChatInputCommand => new DelegateCommand(async () => await SendChatInput());
 
         public DelegateCommand NewChatCommand => new DelegateCommand(NewChat);
+
+        public DelegateCommand NavigateToSettingsCommand => new DelegateCommand(async() => await NavigateToSettings());
         #endregion
 
         #region Constructor
@@ -33,8 +54,6 @@ namespace AIAssistant.ViewModels
         {
             _openAiClient = openAiClient;
             _pageDialogService = pageDialogService;
-
-            _conversationList.Add(new ChatMessage(ChatMessageRole.System, AppConstants.BEHAVIOUR));
         }
         #endregion
 
@@ -43,26 +62,34 @@ namespace AIAssistant.ViewModels
         {
             try
             {
-                if (string.IsNullOrEmpty(ChatInputText))
-                    throw new ArgumentException("Please enter text to initiate the chat.");
-                _conversationList.Add(new ChatMessage(ChatMessageRole.User, ChatInputText));
-                _messageArray = _conversationList.ToArray();
-                var request = new OpenAI_API.Chat.ChatRequest
+                if (NetworkAccess == "Internet")
                 {
-                    Model = OpenAI_API.Models.Model.ChatGPTTurbo,
-                    Temperature = 0.1,
-                    MaxTokens = 500,
-                    Messages = _messageArray
-                };
+                    if (string.IsNullOrEmpty(ChatInputText))
+                        throw new ArgumentException("Please enter text to initiate the chat.");
+                    IsBusy = true;
+                    var model = "";
+                    if (ChatInputText.ToLower().Contains("code"))
+                        model = OpenAI_API.Models.Model.DavinciCode;
+                    ConversationList.Add(new ChatMessage(ChatMessageRole.User, ChatInputText + Environment.NewLine));
+                    _messageArray = ConversationList.ToArray();
+                    var request = new OpenAI_API.Chat.ChatRequest
+                    {
+                        Model = OpenAI_API.Models.Model.ChatGPTTurbo,
+                        Temperature = 1,
+                        MaxTokens = 500,
+                        Messages = _messageArray
+                    };
 
-                var response = await _openAiClient.CreateChatCompletionAsync(request);
+                    var response = await _openAiClient.GetConversation(request);
 
-                AddToConversation(response);
+                    AddToConversation(response);
 
-                DisplayConversation();
+                    DisplayConversation();
 
-                ChatInputText = "";
-
+                    ChatInputText = "";
+                }
+                else
+                    await _pageDialogService.DisplayAlertAsync("Alert", "No internet connection", "Ok");
             }
             catch (ArgumentException e)
             {
@@ -72,38 +99,43 @@ namespace AIAssistant.ViewModels
 
         public void AddToConversation(ChatResult response)
         {
-            _conversationList.Add(new ChatMessage(response.Choices[0].Message.Role, response.Choices[0].Message.Content));
+            ConversationList.Add(new ChatMessage(response.Choices[0].Message.Role, response.Choices[0].Message.Content));
         }
 
         public void DisplayConversation()
         {
             var strBuilder = new StringBuilder();
-            foreach (var i in _conversationList)
+            foreach (var i in ConversationList)
             {
-                strBuilder.AppendLine($"{i.Role}: {i.Content}");
+                strBuilder.AppendLine($"{i.Role} : {i.Content}");
             }
-            ConversationText = strBuilder.ToString();
+            ConversationText = Utils.CodeFormatter.Format(strBuilder.ToString() + Environment.NewLine);
+            IsBusy = false;
         }
 
         public void NewChat()
         {
             ChatInputText = "";
             ConversationText = "";
-            if (_conversationList.Any())
-                _conversationList.Clear();
+            if (ConversationList.Any())
+                ConversationList.Clear();
         }
 
+        public async Task NavigateToSettings()
+        {
+            await _pageDialogService.DisplayAlertAsync("Alert", "Go to Settings", "Ok");
+        }
         #endregion
 
         #region Navigation
         public void OnNavigatedFrom(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
         public void OnNavigatedTo(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
+            IsBusy = false;
+            ConversationList = new ObservableCollection<ChatMessage>();
         }
         #endregion
     }

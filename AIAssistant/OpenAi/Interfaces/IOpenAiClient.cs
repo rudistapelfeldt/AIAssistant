@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AIAssistant.Model;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
+using OpenAI_API.Images;
 
 namespace AIAssistant.OpenAi.Interfaces
 {
@@ -12,9 +13,9 @@ namespace AIAssistant.OpenAi.Interfaces
         
         Task<CompletionResult> GetCompletionText(string request, string output);
 
-        Task<ChatResult> CreateChatCompletionAsync(OpenAI_API.Chat.ChatRequest request);
+        Task<ChatResult> GetConversation(OpenAI_API.Chat.ChatRequest request);
 
-        Task GenerateImage(string prompt);
+        Task<ImageResult> GenerateImage(string prompt);
     }
 }
 

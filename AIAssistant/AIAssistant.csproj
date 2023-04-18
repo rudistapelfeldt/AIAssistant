@@ -66,6 +66,9 @@
 
     <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+
+    <!-- Icon imqages -->
+    <MauiImage Include="Resources\Icon\setting.svg" Resize="false" />
   </ItemGroup>
 
   <ItemGroup>
@@ -76,9 +79,15 @@
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="OpenAI" Version="1.6.0" />
-    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.7.3" />
+    <PackageReference Include="OpenAI" Version="1.7.2" />
+    <PackageReference Include="Betalgo.OpenAI.GPT3" Version="6.8.3" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.59" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.5-beta1.23165.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0-1.final" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,10 +99,38 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="OpenAI" />
     <None Remove="Xamarin.Essentials" />
-    <None Remove="Styles\" />
+    <None Remove="Converter\" />
+    <None Remove="Resources\Raw\lottie-chat.json" />
+    <None Remove="Resources\Raw\Lottie\" />
+    <None Remove="Resources\Raw\Lottie\lottie-chat.json" />
+    <None Remove="Resources\Raw\Lottie\blue-circles-loader.json" />
+    <None Remove="Resources\Icon\" />
+    <None Remove="Resources\Icon\setting.svg" />
+    <None Remove="Controls\" />
+    <None Remove="Utils\" />
+    <None Remove="Selectors\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Styles\" />
+    <Folder Include="Converter\" />
+    <Folder Include="Resources\Raw\Lottie\" />
+    <Folder Include="Resources\Icon\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Selectors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </BundleResource>
+    <BundleResource Include="Resources\Styles\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
+    <EmbeddedResource Remove="Resources\Styles\Colors.xaml" />
   </ItemGroup>
 </Project>

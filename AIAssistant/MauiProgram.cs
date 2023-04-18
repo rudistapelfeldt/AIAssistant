@@ -1,4 +1,6 @@
-﻿namespace AIAssistant;
+﻿using SkiaSharp.Views.Maui.Controls.Hosting;
+
+namespace AIAssistant;
 
 public static class MauiProgram
 {
@@ -7,6 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UsePrismApp<App>(PrismStartup.Configure)
+            .UseSkiaSharp()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
