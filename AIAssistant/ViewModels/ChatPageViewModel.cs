@@ -20,8 +20,6 @@ namespace AIAssistant.ViewModels
         #region Public members
         public string ChatInputText { get; set; }
 
-        public string ConversationText { get; set; }
-
         public bool IsBusy { get; set; }
 
         public string NetworkAccess =>
@@ -109,14 +107,12 @@ namespace AIAssistant.ViewModels
             {
                 strBuilder.AppendLine($"{i.Role} : {i.Content}");
             }
-            ConversationText = Utils.CodeFormatter.Format(strBuilder.ToString() + Environment.NewLine);
             IsBusy = false;
         }
 
         public void NewChat()
         {
             ChatInputText = "";
-            ConversationText = "";
             if (ConversationList.Any())
                 ConversationList.Clear();
         }

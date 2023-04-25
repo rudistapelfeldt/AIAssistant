@@ -10,32 +10,50 @@
     <converters:BooleanInverterConverter x:Key="invertBoolConverter"/>
     <ResourceDictionary>
             <DataTemplate x:Key="assistantTemplate">
-            
+              <Grid ColumnDefinitions="140, Auto" HorizontalOptions="FillAndExpand">
                   <Frame BackgroundColor="{StaticResource assistantMessagePrimary}"
                          CornerRadius="10"
+                         Grid.Column="1"
                          Padding="0"
-                         HasShadow="True">
-                    <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
-                      <Label Text="Al : " HorizontalOptions="Start" FontSize="Header"/>
+                         HasShadow="True"
+                         HorizontalOptions="End">
+                    <HorizontalStackLayout Spacing="20"
+                                           Padding="10">
+                      <Label Text="Al : " FontSize="Header"
+                             FontAttributes="Bold"
+                             FontAutoScalingEnabled="True"/>
                       <Label Text="{Binding Content}"
-                         HorizontalOptions="StartAndExpand"
-                         FontSize="Body"/>
+                         FontSize="Body"
+                         LineBreakMode="CharacterWrap"
+                         WidthRequest="145"
+                         FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
                   </Frame>
-            
+              </Grid>
         </DataTemplate>
         <DataTemplate x:Key="userTemplate">
+              <Grid ColumnDefinitions="Auto, *" HorizontalOptions="FillAndExpand">
                 <Frame BackgroundColor="{StaticResource userMessagePrimary}"
                        CornerRadius="10"
+                       Grid.Column="0"
                        Padding="0"
-                       HasShadow="True">
-                     <HorizontalStackLayout Spacing="20" HorizontalOptions="Start">
-                      <Label Text="User : " HorizontalOptions="Start" FontSize="Header"/>
+                       HasShadow="True"
+                       HorizontalOptions="Start">
+                     <HorizontalStackLayout Spacing="20"
+                                            HorizontalOptions="Start"
+                                            Padding="10">
+                      <Label Text="User : " HorizontalOptions="Start"
+                             FontSize="Header"
+                             FontAttributes="Bold"
+                             FontAutoScalingEnabled="True"/>
                       <Label Text="{Binding Content}"
-                             HorizontalOptions="StartAndExpand"
-                             FontSize="Body"/>
+                             LineBreakMode="CharacterWrap"
+                             WidthRequest="150"
+                             FontSize="Body"
+                             FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
                  </Frame>
+              </Grid>
         </DataTemplate>
         <selectors:MessageDataTemplateSelector x:Key="messageDataTemplateSelector"
                                           AssistantDataTemplate="{StaticResource assistantTemplate}"
@@ -44,8 +62,8 @@
   </ContentPage.Resources>
     <Grid RowDefinitions="1*,Auto, Auto"
         ColumnDefinitions="*, Auto"
-        HorizontalOptions="Fill"
-        VerticalOptions="Fill"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
         Margin="20,60,20,20"
         Style="{StaticResource MainLayout}">
         <Border
@@ -66,17 +84,18 @@
                   IsRunning="True"
                   IsEnabled="True"
                   VerticalOptions="Center"
+                  Scale="0.2"
                   WidthRequest="200"
                   HeightRequest="200"
                   HorizontalOptions="Center"
                   IsVisible="{Binding IsBusy}"/>
                <CollectionView ItemsSource="{Binding ConversationList}"
                                SelectionMode="None"
+                               ItemsUpdatingScrollMode="KeepLastItemInView"
+                               Grid.Column="0"
+                               IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}"
                                x:Name="collectionView"
-                               ItemTemplate="{StaticResource messageDataTemplateSelector}">
-                
-
-               </CollectionView> 
+                               ItemTemplate="{StaticResource messageDataTemplateSelector}"/>
             </Grid>
           </Border>
         
