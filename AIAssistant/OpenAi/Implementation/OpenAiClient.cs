@@ -12,6 +12,7 @@ using OpenAI_API;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
 using OpenAI_API.Images;
+using Microsoft.Extensions.Configuration;
 using CompletionRequest = OpenAI_API.Completions.CompletionRequest;
 
 namespace AIAssistant.OpenAi.Implementation
@@ -20,14 +21,21 @@ namespace AIAssistant.OpenAi.Implementation
     {
         IHttpClientFactory _httpClientFactory;
 
-        OpenAIAPI api = new OpenAIAPI(AppConstants.OPENAI_API_KEY);
+        OpenAIAPI api;
+
+        string openaiApiKey;
 
         readonly ISecureStorageService _secureStorageService;
 
         public OpenAiClient(ISecureStorageService secureStorageService)
         {
             _secureStorageService = secureStorageService;
-           
+            var config = new ConfigurationBuilder()
+    .           AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .Build();
+
+            openaiApiKey = config["OpenAI:ApiKey"];
+            api = new OpenAIAPI(openaiApiKey);
         }
 
         public OpenAIAPI GetApiClient()
@@ -51,7 +59,7 @@ namespace AIAssistant.OpenAi.Implementation
 
                     using (var httpReq = new HttpRequestMessage(HttpMethod.Post, "https://api.openai.com/v1/edits"))
                     {
-                        httpReq.Headers.Add("Authorization", $"Bearer {AppConstants.OPENAI_API_KEY}");
+                        httpReq.Headers.Add("Authorization", $"Bearer {openaiApiKey}");
                         string requestString = JsonSerializer.Serialize(gptEditRequest);
                         httpReq.Content = new StringContent(requestString, Encoding.UTF8, "application/json");
                         using (HttpResponseMessage? httpResponse = await httpClient.SendAsync(httpReq))

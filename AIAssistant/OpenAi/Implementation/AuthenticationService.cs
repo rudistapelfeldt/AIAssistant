@@ -11,12 +11,7 @@ namespace AIAssistant.OpenAi.Implementation
 {
     public class AuthenticationService : IAuthenticationService
     {
-        readonly ISecureStorageService _secureStorageService;
-
-        public AuthenticationService(ISecureStorageService secureStorageService)
-        {
-            _secureStorageService = secureStorageService;
-        }
+        public AuthenticationService() { }
 
         public async Task<string> GetAccessTokenAsync(string apiKey)
         {
@@ -36,7 +31,6 @@ namespace AIAssistant.OpenAi.Implementation
 
                 if (json.RootElement.TryGetProperty("access_token", out var accessToken))
                 {
-                    await _secureStorageService.SetApiKey(accessToken.GetString());
                     return accessToken.GetString();
                 }
             }

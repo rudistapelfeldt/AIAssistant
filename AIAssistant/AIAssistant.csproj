@@ -109,6 +109,8 @@
     <None Remove="Controls\" />
     <None Remove="Utils\" />
     <None Remove="Selectors\" />
+    <None Remove="Configuration\" />
+    <None Remove="Configuration\appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -118,6 +120,7 @@
     <Folder Include="Controls\" />
     <Folder Include="Utils\" />
     <Folder Include="Selectors\" />
+    <Folder Include="Configuration\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Styles\Styles.xaml">
@@ -128,6 +131,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </BundleResource>
+    <BundleResource Include="Configuration\appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />

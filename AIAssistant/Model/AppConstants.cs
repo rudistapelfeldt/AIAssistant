@@ -3,8 +3,6 @@ namespace AIAssistant.Model
 {
     public class AppConstants
     {
-        public const string OPENAI_API_KEY = "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";
-
         public const string API_STORAGE_KEY = "api_storage_key";
 
         //chat service
