@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AIAssistant.Model;
+using OpenAI_API;
 using OpenAI_API.Chat;
 using OpenAI_API.Completions;
 using OpenAI_API.Images;
@@ -16,6 +17,8 @@ namespace AIAssistant.OpenAi.Interfaces
         Task<ChatResult> GetConversation(OpenAI_API.Chat.ChatRequest request);
 
         Task<ImageResult> GenerateImage(string prompt);
+
+        OpenAIAPI GetApiClient();
     }
 }
 

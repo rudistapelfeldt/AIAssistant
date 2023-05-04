@@ -8,9 +8,9 @@
              Title="AI Chat">
   <ContentPage.Resources>
     <converters:BooleanInverterConverter x:Key="invertBoolConverter"/>
-    <ResourceDictionary>
+    <!--<ResourceDictionary>
             <DataTemplate x:Key="assistantTemplate">
-              <Grid ColumnDefinitions="140, Auto" HorizontalOptions="FillAndExpand">
+              <Grid ColumnDefinitions="1*, Auto" HorizontalOptions="FillAndExpand">
                   <Frame BackgroundColor="{StaticResource assistantMessagePrimary}"
                          CornerRadius="10"
                          Grid.Column="1"
@@ -24,15 +24,14 @@
                              FontAutoScalingEnabled="True"/>
                       <Label Text="{Binding Content}"
                          FontSize="Body"
-                         LineBreakMode="CharacterWrap"
-                         WidthRequest="145"
+                         LineBreakMode="WordWrap"
                          FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
                   </Frame>
               </Grid>
-        </DataTemplate>
+        </DataTemplate> 
         <DataTemplate x:Key="userTemplate">
-              <Grid ColumnDefinitions="Auto, *" HorizontalOptions="FillAndExpand">
+              <Grid ColumnDefinitions="1*, *" HorizontalOptions="FillAndExpand">
                 <Frame BackgroundColor="{StaticResource userMessagePrimary}"
                        CornerRadius="10"
                        Grid.Column="0"
@@ -47,8 +46,7 @@
                              FontAttributes="Bold"
                              FontAutoScalingEnabled="True"/>
                       <Label Text="{Binding Content}"
-                             LineBreakMode="CharacterWrap"
-                             WidthRequest="150"
+                             LineBreakMode="WordWrap"
                              FontSize="Body"
                              FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
@@ -58,7 +56,7 @@
         <selectors:MessageDataTemplateSelector x:Key="messageDataTemplateSelector"
                                           AssistantDataTemplate="{StaticResource assistantTemplate}"
                                           UserDataTemplate="{StaticResource userTemplate}" />
-        </ResourceDictionary>
+        </ResourceDictionary> -->
   </ContentPage.Resources>
     <Grid RowDefinitions="1*,Auto, Auto"
         ColumnDefinitions="*, Auto"
@@ -89,13 +87,12 @@
                   HeightRequest="200"
                   HorizontalOptions="Center"
                   IsVisible="{Binding IsBusy}"/>
-               <CollectionView ItemsSource="{Binding ConversationList}"
-                               SelectionMode="None"
-                               ItemsUpdatingScrollMode="KeepLastItemInView"
-                               Grid.Column="0"
-                               IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}"
-                               x:Name="collectionView"
-                               ItemTemplate="{StaticResource messageDataTemplateSelector}"/>
+               <Editor
+                 Text="{Binding ConversationText, Mode=TwoWay}"
+                 FontSize="Body"
+                 HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand"
+                 TextColor="{StaticResource TextPrimary}"/>
             </Grid>
           </Border>
         

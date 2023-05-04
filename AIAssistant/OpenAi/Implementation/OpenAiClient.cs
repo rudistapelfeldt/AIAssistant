@@ -30,6 +30,11 @@ namespace AIAssistant.OpenAi.Implementation
            
         }
 
+        public OpenAIAPI GetApiClient()
+        {
+            return api;
+        }
+
         public async Task<string> GetCorrectSpelling(string prompt)
         {
             try
