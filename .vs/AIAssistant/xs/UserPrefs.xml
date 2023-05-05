@@ -5,21 +5,22 @@
   <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.46" />
   <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/ViewModels/ChatPageViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument=".gitignore">
     <Files>
-      <File FileName="AIAssistant/PrismStartup.cs" Line="27" Column="87" />
-      <File FileName="AIAssistant/MauiProgram.cs" Line="28" Column="56" />
-      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" Line="36" Column="1" />
-      <File FileName="AIAssistant/appsettings.json" Line="3" Column="67" />
-      <File FileName="AIAssistant/Model/OpenAISettings.cs" Line="7" Column="6" />
+      <File FileName="AIAssistant/PrismStartup.cs" />
+      <File FileName="AIAssistant/MauiProgram.cs" />
+      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" />
+      <File FileName="AIAssistant/appsettings.json" />
+      <File FileName="AIAssistant/Model/OpenAISettings.cs" />
       <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="94" Column="40" />
+      <File FileName=".gitignore" Line="409" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
           <Node name="AIAssistant" expanded="True">
-            <Node name="AIAssistant" expanded="True" selected="True">
+            <Node name="AIAssistant" expanded="True">
               <Node name="Model" expanded="True" />
               <Node name="OpenAi" expanded="True">
                 <Node name="Implementation" expanded="True" />

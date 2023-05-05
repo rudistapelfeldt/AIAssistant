@@ -127,6 +127,7 @@ namespace AIAssistant.ViewModels
             ChatInputText = "";
             if (ConversationList.Any())
                 ConversationList.Clear();
+            ConversationText = "";
         }
 
         public async Task NavigateToSettings()

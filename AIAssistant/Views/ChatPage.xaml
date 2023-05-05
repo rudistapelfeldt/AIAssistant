@@ -8,7 +8,7 @@
              Title="AI Chat">
   <ContentPage.Resources>
     <converters:BooleanInverterConverter x:Key="invertBoolConverter"/>
-    <!--<ResourceDictionary>
+    <ResourceDictionary>
             <DataTemplate x:Key="assistantTemplate">
               <Grid ColumnDefinitions="1*, Auto" HorizontalOptions="FillAndExpand">
                   <Frame BackgroundColor="{StaticResource assistantMessagePrimary}"
@@ -56,7 +56,7 @@
         <selectors:MessageDataTemplateSelector x:Key="messageDataTemplateSelector"
                                           AssistantDataTemplate="{StaticResource assistantTemplate}"
                                           UserDataTemplate="{StaticResource userTemplate}" />
-        </ResourceDictionary> -->
+        </ResourceDictionary> 
   </ContentPage.Resources>
     <Grid RowDefinitions="1*,Auto, Auto"
         ColumnDefinitions="*, Auto"
@@ -77,7 +77,20 @@
                   Grid.ColumnSpan="2"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand">
-                <ActivityIndicator
+                
+              <ScrollView VerticalScrollBarVisibility="Always"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}"
+                          Padding="10">
+                  <Editor
+                     Text="{Binding ConversationText, Mode=TwoWay}"
+                     FontSize="Body"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     TextColor="{StaticResource TextPrimary}"/>
+              </ScrollView>
+              <ActivityIndicator
                   Color="Blue"
                   IsRunning="True"
                   IsEnabled="True"
@@ -87,12 +100,6 @@
                   HeightRequest="200"
                   HorizontalOptions="Center"
                   IsVisible="{Binding IsBusy}"/>
-               <Editor
-                 Text="{Binding ConversationText, Mode=TwoWay}"
-                 FontSize="Body"
-                 HorizontalOptions="FillAndExpand"
-                 VerticalOptions="FillAndExpand"
-                 TextColor="{StaticResource TextPrimary}"/>
             </Grid>
           </Border>
         
