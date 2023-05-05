@@ -1,71 +1,45 @@
 ﻿<Properties NuGet.AddPackagesDialog.IncludePrerelease="True" StartupConfiguration="{CC89716F-1380-40F7-B71F-F59E89A03241}|Default">
+  <Debugger.DebugSourceFolders>
+    <String>/Users/rudistapelfeldt/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dadhi/DryIoc/682b17cba16f03e3750a6b79804bf308bcad95d2</String>
+  </Debugger.DebugSourceFolders>
   <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.46" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="MyAppleMacCatalystID" />
   <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/ViewModels/ChatPageViewModel.cs">
     <Files>
-      <File FileName="AIAssistant/Resources/Styles/Styles.xaml" />
-      <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="100" Column="1" />
-      <File FileName="AIAssistant/Resources/Styles/Colors.xaml" />
-      <File FileName="AIAssistant/AIAssistant.csproj" />
-      <File FileName="AIAssistant/Views/ChatPage.xaml.cs" Line="1" Column="1" />
-      <File FileName="AIAssistant/Views/TabbedMainPage.xaml" />
-      <File FileName="AIAssistant/MauiProgram.cs" />
-      <File FileName="AIAssistant/PrismStartup.cs" />
-      <File FileName="AIAssistant/Platforms/Android/MainApplication.cs" />
-      <File FileName="AIAssistant/Controls/CustomEditor.cs" />
-      <File FileName="AIAssistant/Utils/CodeFormatter.cs" />
-      <File FileName="AIAssistant/Selectors/MessageDataTemplateSelector.cs" />
-      <File FileName="AIAssistant/Views/TabbedMainPage.xaml.cs" />
-      <File FileName="AIAssistant/Views/ChatPage.xaml" Line="34" Column="42" />
-      <File FileName="AIAssistant/Platforms/MacCatalyst/Program.cs" />
-      <File FileName="AIAssistant/Platforms/MacCatalyst/AppDelegate.cs" />
-      <File FileName="AIAssistant/OpenAi/Implementation/SecureStorageService.cs" Line="1" Column="14" />
+      <File FileName="AIAssistant/PrismStartup.cs" Line="27" Column="87" />
+      <File FileName="AIAssistant/MauiProgram.cs" Line="28" Column="56" />
+      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" Line="36" Column="1" />
+      <File FileName="AIAssistant/appsettings.json" Line="3" Column="67" />
+      <File FileName="AIAssistant/Model/OpenAISettings.cs" Line="7" Column="6" />
+      <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="94" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
           <Node name="AIAssistant" expanded="True">
-            <Node name="AIAssistant" expanded="True">
-              <Node name="Controls" expanded="True" />
+            <Node name="AIAssistant" expanded="True" selected="True">
+              <Node name="Model" expanded="True" />
               <Node name="OpenAi" expanded="True">
                 <Node name="Implementation" expanded="True" />
+                <Node name="Interfaces" expanded="True" />
               </Node>
-              <Node name="Platforms" expanded="True">
-                <Node name="Android" expanded="True">
-                  <Node name="Resources" expanded="True">
-                    <Node name="values" expanded="True" />
-                  </Node>
-                </Node>
-                <Node name="MacCatalyst" expanded="True" />
-                <Node name="Tizen" expanded="True" />
-              </Node>
-              <Node name="Resources" expanded="True">
-                <Node name="Icon" expanded="True" />
-                <Node name="Raw" expanded="True">
-                  <Node name="Lottie" expanded="True" />
-                </Node>
-                <Node name="Styles" expanded="True" />
-              </Node>
-              <Node name="Selectors" expanded="True" />
-              <Node name="Utils" expanded="True" />
-              <Node name="ViewModels" expanded="True">
-                <Node name="ChatPageViewModel.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="ChatPage.xaml" expanded="True" />
-              </Node>
+              <Node name="ViewModels" expanded="True" />
+              <Node name="App.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/rudistapelfeldt/Documents/GitHub/AIAssistant/AIAssistant/ViewModels/ChatPageViewModel.cs" relfile="AIAssistant/ViewModels/ChatPageViewModel.cs" line="121" column="1" />
+      <Breakpoint file="/Users/rudistapelfeldt/Documents/GitHub/AIAssistant/AIAssistant/ViewModels/ChatPageViewModel.cs" relfile="AIAssistant/ViewModels/ChatPageViewModel.cs" line="71" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

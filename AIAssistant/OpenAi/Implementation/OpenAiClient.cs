@@ -14,28 +14,25 @@ using OpenAI_API.Completions;
 using OpenAI_API.Images;
 using Microsoft.Extensions.Configuration;
 using CompletionRequest = OpenAI_API.Completions.CompletionRequest;
+using System.Reflection;
 
 namespace AIAssistant.OpenAi.Implementation
 {
     public class OpenAiClient : IOpenAiClient
     {
-        IHttpClientFactory _httpClientFactory;
+        readonly IHttpClientFactory _httpClientFactory;
+
+        readonly IConfiguration _configuration;
 
         OpenAIAPI api;
 
         string openaiApiKey;
 
-        readonly ISecureStorageService _secureStorageService;
-
-        public OpenAiClient(ISecureStorageService secureStorageService)
+        public OpenAiClient(IConfiguration configuration)
         {
-            _secureStorageService = secureStorageService;
-            var config = new ConfigurationBuilder()
-    .           AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .Build();
-
-            openaiApiKey = config["OpenAI:ApiKey"];
-            api = new OpenAIAPI(openaiApiKey);
+            _configuration = configuration;
+            var settings = configuration.GetRequiredSection("OpenAISettings").Get<OpenAISettings>();
+            api = new OpenAIAPI(settings.ApiKey);
         }
 
         public OpenAIAPI GetApiClient()

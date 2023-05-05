@@ -2,6 +2,9 @@
 using AIAssistant.OpenAi.Interfaces;
 using AIAssistant.OpenAi.Implementation;
 using AIAssistant.ViewModels;
+using Microsoft.Extensions.Configuration;
+using System.Reflection;
+
 namespace AIAssistant;
 
 internal static class PrismStartup
@@ -21,8 +24,6 @@ internal static class PrismStartup
                      .RegisterForNavigation<ImageGeneratorPage>()
                      .RegisterInstance(SemanticScreenReader.Default)
                      .RegisterScoped<IOpenAiClient, OpenAiClient>()
-                     .RegisterScoped<IAuthenticationService, AuthenticationService>()
-                     .RegisterScoped<ISecureStorageService, SecureStorageService>();
-                     
+                     .RegisterScoped<IAuthenticationService, AuthenticationService>();
     }
 }

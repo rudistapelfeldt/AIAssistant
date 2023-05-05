@@ -51,6 +51,12 @@
     <MtouchInterpreter>-all</MtouchInterpreter>
     <MtouchArch>ARMv7</MtouchArch>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-maccatalyst|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-maccatalyst|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+  </PropertyGroup>
   <ItemGroup>
     <!-- App Icon -->
     <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
@@ -88,6 +94,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.6.0-1.final" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -110,7 +118,7 @@
     <None Remove="Utils\" />
     <None Remove="Selectors\" />
     <None Remove="Configuration\" />
-    <None Remove="Configuration\appsettings.json" />
+    <None Remove="appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -131,10 +139,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </BundleResource>
-    <BundleResource Include="Configuration\appsettings.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
     <EmbeddedResource Remove="Resources\Styles\Colors.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json" />
   </ItemGroup>
 </Project>

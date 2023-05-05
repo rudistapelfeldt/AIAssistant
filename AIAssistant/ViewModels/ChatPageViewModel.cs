@@ -63,35 +63,35 @@ namespace AIAssistant.ViewModels
                 {
                     if (string.IsNullOrEmpty(ChatInputText))
                         throw new ArgumentException("Please enter text to initiate the chat.");
-                    var chat = _openAiClient.GetApiClient().Chat.CreateConversation();
-                    chat.AppendUserInput(ChatInputText);
+                    //var chat = _openAiClient.GetApiClient().Chat.CreateConversation();
+                    //chat.AppendUserInput(ChatInputText);
 
-                    await chat.StreamResponseFromChatbotAsync(res =>
-                    {
-                        ConversationText = ConversationText + res;
-                    });
-
-                    //IsBusy = true;
-                    //var model = "";
-                    //if (ChatInputText.ToLower().Contains("code"))
-                    //    model = OpenAI_API.Models.Model.DavinciCode;
-                    //ConversationList.Add(new ChatMessage(ChatMessageRole.User, ChatInputText + Environment.NewLine));
-                    //_messageArray = ConversationList.ToArray();
-                    //var request = new OpenAI_API.Chat.ChatRequest
+                    //await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
                     //{
-                    //    Model = OpenAI_API.Models.Model.ChatGPTTurbo,
-                    //    Temperature = 1,
-                    //    MaxTokens = 500,
-                    //    Messages = _messageArray
-                    //};
+                    //    ConversationText = res;
+                    //}
 
-                    //var response = await _openAiClient.GetConversation(request);
+                    IsBusy = true;
+                    var model = "";
+                    if (ChatInputText.ToLower().Contains("code"))
+                        model = OpenAI_API.Models.Model.DavinciCode;
+                    ConversationList.Add(new ChatMessage(ChatMessageRole.User, ChatInputText + Environment.NewLine));
+                    _messageArray = ConversationList.ToArray();
+                    var request = new OpenAI_API.Chat.ChatRequest
+                    {
+                        Model = OpenAI_API.Models.Model.ChatGPTTurbo,
+                        Temperature = 1,
+                        MaxTokens = 500,
+                        Messages = _messageArray
+                    };
 
-                    //AddToConversation(response);
+                    var response = await _openAiClient.GetConversation(request);
 
-                    //DisplayConversation();
+                    AddToConversation(response);
 
-                    //ChatInputText = "";
+                    DisplayConversation();
+
+                    ChatInputText = "";
                 }
                 else
                     await _pageDialogService.DisplayAlertAsync("Alert", "No internet connection", "Ok");
@@ -118,6 +118,7 @@ namespace AIAssistant.ViewModels
             {
                 strBuilder.AppendLine($"{i.Role} : {i.Content}");
             }
+            ConversationText = strBuilder.ToString();
             IsBusy = false;
         }
 
