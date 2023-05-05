@@ -406,6 +406,7 @@ appsettings.json
 ##
 ## Visual studio for Mac
 ##
+.vs/
 
 
 # globs
