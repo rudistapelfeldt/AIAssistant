@@ -81,8 +81,7 @@
               <ScrollView VerticalScrollBarVisibility="Always"
                           HorizontalOptions="FillAndExpand"
                           VerticalOptions="FillAndExpand"
-                          IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}"
-                          Padding="10">
+                          IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}">
                   <Editor
                      Text="{Binding ConversationText, Mode=TwoWay}"
                      FontSize="Body"

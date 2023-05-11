@@ -1,19 +1,11 @@
 ﻿<Properties NuGet.AddPackagesDialog.IncludePrerelease="True" StartupConfiguration="{CC89716F-1380-40F7-B71F-F59E89A03241}|Default">
-  <Debugger.DebugSourceFolders>
-    <String>/Users/rudistapelfeldt/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dadhi/DryIoc/682b17cba16f03e3750a6b79804bf308bcad95d2</String>
-  </Debugger.DebugSourceFolders>
-  <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.46" />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument=".gitignore">
+  <MonoDevelop.Ide.Workbench ActiveDocument="AIAssistant/App.xaml">
     <Files>
-      <File FileName="AIAssistant/PrismStartup.cs" />
-      <File FileName="AIAssistant/MauiProgram.cs" />
-      <File FileName="AIAssistant/OpenAi/Implementation/OpenAiClient.cs" />
-      <File FileName="AIAssistant/appsettings.json" />
-      <File FileName="AIAssistant/Model/OpenAISettings.cs" />
-      <File FileName="AIAssistant/ViewModels/ChatPageViewModel.cs" Line="94" Column="40" />
-      <File FileName=".gitignore" Line="409" Column="5" />
+      <File FileName="AIAssistant/App.xaml" Line="9" Column="47" />
+      <File FileName="../../../../../usr/local/share/dotnet/x64/packs/Microsoft.Android.Sdk.Darwin/33.0.46/tools/Xamarin.Android.Aapt2.targets" />
+      <File FileName="AIAssistant/Resources/Styles/Colors.xaml" Line="1" Column="1" />
+      <File FileName="AIAssistant/Resources/Styles/Styles.xaml" />
+      <File FileName="AIAssistant/AIAssistant.csproj" Line="149" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,16 +18,29 @@
                 <Node name="Implementation" expanded="True" />
                 <Node name="Interfaces" expanded="True" />
               </Node>
+              <Node name="Platforms" expanded="True">
+                <Node name="Android" expanded="True">
+                  <Node name="Resources" expanded="True">
+                    <Node name="mipmap" expanded="True" />
+                    <Node name="values" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Resources" expanded="True">
+                <Node name="Images" expanded="True" />
+                <Node name="Raw" expanded="True">
+                  <Node name="Lottie" expanded="True" />
+                </Node>
+                <Node name="Styles" expanded="True" />
+              </Node>
               <Node name="ViewModels" expanded="True" />
-              <Node name="App.xaml" expanded="True" />
+              <Node name="App.xaml" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="MyAppleMacCatalystID" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -43,4 +48,12 @@
       <Breakpoint file="/Users/rudistapelfeldt/Documents/GitHub/AIAssistant/AIAssistant/ViewModels/ChatPageViewModel.cs" relfile="AIAssistant/ViewModels/ChatPageViewModel.cs" line="71" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <Debugger.DebugSourceFolders>
+    <String>/Users/rudistapelfeldt/Library/Caches/VisualStudio/17.0/Symbols/raw.githubusercontent.com/dadhi/DryIoc/682b17cba16f03e3750a6b79804bf308bcad95d2</String>
+  </Debugger.DebugSourceFolders>
+  <MonoDevelop.Ide.ItemProperties.AIAssistant PreferredExecutionTarget="MyAppleMacCatalystID" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.MonoDroid LastDeploySdkVersion="33.0.46" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="MyAppleMacCatalystID" />
 </Properties>
