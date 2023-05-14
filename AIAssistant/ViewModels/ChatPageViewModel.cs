@@ -1,7 +1,12 @@
 ﻿using System.Collections.ObjectModel;
-using System.Text;
+using System.Text.RegularExpressions;
+using AIAssistant.Helpers;
+using AIAssistant.Model;
 using AIAssistant.OpenAi.Interfaces;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Graphics;
 using OpenAI_API.Chat;
+using ChatMessage = OpenAI_API.Chat.ChatMessage;
 
 namespace AIAssistant.ViewModels
 {
@@ -16,8 +21,6 @@ namespace AIAssistant.ViewModels
 
         #region Public members
         public string ChatInputText { get; set; }
-
-        public string ConversationText { get; set; }
 
         public bool IsBusy { get; set; }
 
@@ -43,7 +46,7 @@ namespace AIAssistant.ViewModels
 
         public DelegateCommand NewChatCommand => new DelegateCommand(NewChat);
 
-        public DelegateCommand NavigateToSettingsCommand => new DelegateCommand(async() => await NavigateToSettings());
+        public DelegateCommand NavigateToSettingsCommand => new DelegateCommand(async () => await NavigateToSettings());
         #endregion
 
         #region Constructor
@@ -63,33 +66,24 @@ namespace AIAssistant.ViewModels
                 {
                     if (string.IsNullOrEmpty(ChatInputText))
                         throw new ArgumentException("Please enter text to initiate the chat.");
-                    //var chat = _openAiClient.GetApiClient().Chat.CreateConversation();
-                    //chat.AppendUserInput(ChatInputText);
-
-                    //await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
-                    //{
-                    //    ConversationText = res;
-                    //}
 
                     IsBusy = true;
                     var model = "";
                     if (ChatInputText.ToLower().Contains("code"))
                         model = OpenAI_API.Models.Model.DavinciCode;
-                    ConversationList.Add(new ChatMessage(ChatMessageRole.User, ChatInputText + Environment.NewLine));
+                    ConversationList.Add(new Model.ChatMessage(ChatMessageRole.User, null , ChatInputText + Environment.NewLine));
                     _messageArray = ConversationList.ToArray();
                     var request = new OpenAI_API.Chat.ChatRequest
                     {
                         Model = OpenAI_API.Models.Model.ChatGPTTurbo,
                         Temperature = 1,
                         MaxTokens = 500,
-                        Messages = _messageArray
+                        Messages = (IList<OpenAI_API.Chat.ChatMessage>)_messageArray
                     };
 
                     var response = await _openAiClient.GetConversation(request);
 
                     AddToConversation(response);
-
-                    DisplayConversation();
 
                     ChatInputText = "";
                 }
@@ -100,7 +94,7 @@ namespace AIAssistant.ViewModels
             {
                 await _pageDialogService.DisplayAlertAsync("Alert", e.Message, "Ok");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await _pageDialogService.DisplayAlertAsync("Error", ex.Message, "Ok");
             }
@@ -108,18 +102,30 @@ namespace AIAssistant.ViewModels
 
         public void AddToConversation(ChatResult response)
         {
-            ConversationList.Add(new ChatMessage(response.Choices[0].Message.Role, response.Choices[0].Message.Content));
+            if (response.Choices[0].Message.Content.Contains("```"))
+                ConversationList.Add(new Model.ChatMessage(response.Choices[0].Message.Role, null, response.Choices[0].Message.Content.Replace("```", "")));
+            else
+                ConversationList.Add(new Model.ChatMessage(response.Choices[0].Message.Role, null , response.Choices[0].Message.Content));
+            IsBusy = false;
         }
 
-        public void DisplayConversation()
+        public Model.ChatMessage FormatCodeBlock(ChatResult response)
         {
-            var strBuilder = new StringBuilder();
-            foreach (var i in ConversationList)
-            {
-                strBuilder.AppendLine($"{i.Role} : {i.Content}");
-            }
-            ConversationText = strBuilder.ToString();
-            IsBusy = false;
+            var codeBlock = new FormattedString();
+
+            codeBlock.Spans.Add(new Span { Text = "public " });
+            codeBlock.Spans.Add(new Span { Text = "class ", TextColor = Colors.Blue });
+            codeBlock.Spans.Add(new Span { Text = "MyClass", TextColor = Colors.Red });
+            codeBlock.Spans.Add(new Span { Text = "\n{\n    " });
+            codeBlock.Spans.Add(new Span { Text = "// Comment", TextColor = Colors.Green });
+            codeBlock.Spans.Add(new Span { Text = "\n    " });
+            codeBlock.Spans.Add(new Span { Text = "string ", TextColor = Colors.Purple });
+            codeBlock.Spans.Add(new Span { Text = "myString", TextColor = Colors.Red });
+            codeBlock.Spans.Add(new Span { Text = " = " });
+            codeBlock.Spans.Add(new Span { Text = "\"Hello, world!\"", TextColor = Colors.Brown });
+            codeBlock.Spans.Add(new Span { Text = ";\n}", TextColor = Colors.Transparent });
+
+            return new Model.ChatMessage(response.Choices[0].Message.Role, new CodeItem { Code = codeBlock });
         }
 
         public void NewChat()
@@ -127,7 +133,6 @@ namespace AIAssistant.ViewModels
             ChatInputText = "";
             if (ConversationList.Any())
                 ConversationList.Clear();
-            ConversationText = "";
         }
 
         public async Task NavigateToSettings()

@@ -10,13 +10,15 @@
     <converters:BooleanInverterConverter x:Key="invertBoolConverter"/>
     <ResourceDictionary>
             <DataTemplate x:Key="assistantTemplate">
-              <Grid ColumnDefinitions="1*, Auto" HorizontalOptions="FillAndExpand">
+              <StackLayout HorizontalOptions="StartAndExpand"
+                           VerticalOptions="StartAndExpand">
                   <Frame BackgroundColor="{StaticResource assistantMessagePrimary}"
                          CornerRadius="10"
                          Grid.Column="1"
-                         Padding="0"
+                         Padding="5"
                          HasShadow="True"
-                         HorizontalOptions="End">
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions="StartAndExpand">
                     <HorizontalStackLayout Spacing="20"
                                            Padding="10">
                       <Label Text="Al : " FontSize="Header"
@@ -25,21 +27,25 @@
                       <Label Text="{Binding Content}"
                          FontSize="Body"
                          LineBreakMode="WordWrap"
+                         HorizontalOptions="StartAndExpand"
+                         VerticalOptions="StartAndExpand"
                          FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
                   </Frame>
-              </Grid>
+              </StackLayout>
         </DataTemplate> 
         <DataTemplate x:Key="userTemplate">
-              <Grid ColumnDefinitions="1*, *" HorizontalOptions="FillAndExpand">
+              <StackLayout HorizontalOptions="StartAndExpand"
+                           VerticalOptions="StartAndExpand">
                 <Frame BackgroundColor="{StaticResource userMessagePrimary}"
                        CornerRadius="10"
                        Grid.Column="0"
                        Padding="0"
                        HasShadow="True"
-                       HorizontalOptions="Start">
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="StartAndExpand">
                      <HorizontalStackLayout Spacing="20"
-                                            HorizontalOptions="Start"
+                                            HorizontalOptions="FillAndExpand"
                                             Padding="10">
                       <Label Text="User : " HorizontalOptions="Start"
                              FontSize="Header"
@@ -47,11 +53,13 @@
                              FontAutoScalingEnabled="True"/>
                       <Label Text="{Binding Content}"
                              LineBreakMode="WordWrap"
+                             HorizontalOptions="StartAndExpand"
+                             VerticalOptions="StartAndExpand"
                              FontSize="Body"
                              FontAutoScalingEnabled="True"/>
                     </HorizontalStackLayout>
                  </Frame>
-              </Grid>
+              </StackLayout>
         </DataTemplate>
         <selectors:MessageDataTemplateSelector x:Key="messageDataTemplateSelector"
                                           AssistantDataTemplate="{StaticResource assistantTemplate}"
@@ -77,18 +85,10 @@
                   Grid.ColumnSpan="2"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand">
-                
-              <ScrollView VerticalScrollBarVisibility="Always"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand"
-                          IsVisible="{Binding IsBusy, Converter={StaticResource invertBoolConverter}}">
-                  <Editor
-                     Text="{Binding ConversationText, Mode=TwoWay}"
-                     FontSize="Body"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"
-                     TextColor="{StaticResource TextPrimary}"/>
-              </ScrollView>
+              <CollectionView ItemsSource="{Binding ConversationList}"
+                              ItemTemplate="{StaticResource messageDataTemplateSelector}"
+                              HorizontalScrollBarVisibility="Always"
+                              ItemsUpdatingScrollMode="KeepItemsInView"/>
               <ActivityIndicator
                   Color="Blue"
                   IsRunning="True"

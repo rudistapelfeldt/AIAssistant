@@ -119,6 +119,7 @@
     <None Remove="Selectors\" />
     <None Remove="Configuration\" />
     <None Remove="appsettings.json" />
+    <None Remove="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Model\" />
@@ -129,6 +130,7 @@
     <Folder Include="Utils\" />
     <Folder Include="Selectors\" />
     <Folder Include="Configuration\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Styles\Styles.xaml">
